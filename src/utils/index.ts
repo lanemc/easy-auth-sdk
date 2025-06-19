@@ -58,7 +58,7 @@ export async function verifyPassword(password: string, hash: string): Promise<bo
 // JWT utilities
 export function createJWT(payload: Record<string, unknown>, secret: string, expiresIn: string = '30d'): string {
   try {
-    return jwt.sign(payload, secret, { expiresIn })
+    return jwt.sign(payload, secret, { expiresIn } as any)
   } catch (error) {
     throw new AuthError(
       'Failed to create JWT',

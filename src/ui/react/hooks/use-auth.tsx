@@ -239,7 +239,7 @@ export function withAuth<P extends object>(
       )
     }
 
-    return <Component {...props} ref={ref} />
+    return <Component {...props as any} ref={ref} />
   })
 
   WrappedComponent.displayName = `withAuth(${Component.displayName || Component.name})`

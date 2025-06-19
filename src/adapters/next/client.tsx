@@ -281,7 +281,7 @@ export function withNextAuth<P extends object>(
       )
     }
 
-    return <Component {...props} ref={ref} />
+    return <Component {...props as any} ref={ref} />
   })
 
   WrappedComponent.displayName = `withNextAuth(${Component.displayName || Component.name})`

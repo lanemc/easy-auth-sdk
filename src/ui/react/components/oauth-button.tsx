@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Button, type ButtonProps } from './button'
 import { cn } from '../utils'
 
-const providerIcons = {
+export const providerIcons = {
   google: (
     <svg viewBox="0 0 24 24" className="h-4 w-4">
       <path
