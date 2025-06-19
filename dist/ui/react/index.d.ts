@@ -7,10 +7,10 @@ import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ClassValue } from 'clsx';
 import { z } from 'zod';
 
-declare const buttonVariants: (props?: ({
-    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost" | null | undefined;
-    size?: "default" | "sm" | "lg" | "icon" | null | undefined;
-} & class_variance_authority_dist_types.ClassProp) | undefined) => string;
+declare const buttonVariants: (props?: {
+    variant?: "link" | "default" | "destructive" | "outline" | "secondary" | "ghost";
+    size?: "default" | "sm" | "lg" | "icon";
+} & class_variance_authority_dist_types.ClassProp) => string;
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof buttonVariants> {
     asChild?: boolean;
 }
@@ -20,7 +20,7 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 declare const Input: React.ForwardRefExoticComponent<InputProps & React.RefAttributes<HTMLInputElement>>;
 
-declare const Label: React.ForwardRefExoticComponent<Omit<LabelPrimitive.LabelProps & React.RefAttributes<HTMLLabelElement>, "ref"> & VariantProps<(props?: class_variance_authority_dist_types.ClassProp | undefined) => string> & React.RefAttributes<HTMLLabelElement>>;
+declare const Label: React.ForwardRefExoticComponent<Omit<LabelPrimitive.LabelProps & React.RefAttributes<HTMLLabelElement>, "ref"> & VariantProps<(props?: class_variance_authority_dist_types.ClassProp) => string> & React.RefAttributes<HTMLLabelElement>>;
 
 declare const Card: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
 declare const CardHeader: React.ForwardRefExoticComponent<React.HTMLAttributes<HTMLDivElement> & React.RefAttributes<HTMLDivElement>>;
@@ -160,21 +160,21 @@ declare const UserSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    id: string;
-    email: string;
-    emailVerified: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-    image?: string | undefined;
-    name?: string | undefined;
+    image?: string;
+    id?: string;
+    name?: string;
+    email?: string;
+    emailVerified?: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }, {
-    id: string;
-    email: string;
-    createdAt: Date;
-    updatedAt: Date;
-    image?: string | undefined;
-    name?: string | undefined;
-    emailVerified?: boolean | undefined;
+    image?: string;
+    id?: string;
+    name?: string;
+    email?: string;
+    emailVerified?: boolean;
+    createdAt?: Date;
+    updatedAt?: Date;
 }>;
 type User = z.infer<typeof UserSchema>;
 declare const SessionSchema: z.ZodObject<{
@@ -185,19 +185,19 @@ declare const SessionSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    expiresAt: Date;
-    sessionToken: string;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    expiresAt?: Date;
+    sessionToken?: string;
 }, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    expiresAt: Date;
-    sessionToken: string;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    expiresAt?: Date;
+    sessionToken?: string;
 }>;
 type Session = z.infer<typeof SessionSchema>;
 

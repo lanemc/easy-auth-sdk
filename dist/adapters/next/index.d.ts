@@ -23,21 +23,21 @@ declare const UserSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    id: string;
-    email: string;
-    emailVerified: boolean;
-    createdAt: Date;
-    updatedAt: Date;
-    name?: string | undefined;
-    image?: string | undefined;
+    id?: string;
+    email?: string;
+    name?: string;
+    emailVerified?: boolean;
+    image?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }, {
-    id: string;
-    email: string;
-    createdAt: Date;
-    updatedAt: Date;
-    name?: string | undefined;
-    emailVerified?: boolean | undefined;
-    image?: string | undefined;
+    id?: string;
+    email?: string;
+    name?: string;
+    emailVerified?: boolean;
+    image?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
 }>;
 type User = z.infer<typeof UserSchema>;
 declare const AccountSchema: z.ZodObject<{
@@ -51,25 +51,25 @@ declare const AccountSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    provider: string;
-    providerAccountId: string;
-    accessToken?: string | undefined;
-    refreshToken?: string | undefined;
-    expiresAt?: number | undefined;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    provider?: string;
+    providerAccountId?: string;
+    accessToken?: string;
+    refreshToken?: string;
+    expiresAt?: number;
 }, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    provider: string;
-    providerAccountId: string;
-    accessToken?: string | undefined;
-    refreshToken?: string | undefined;
-    expiresAt?: number | undefined;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    provider?: string;
+    providerAccountId?: string;
+    accessToken?: string;
+    refreshToken?: string;
+    expiresAt?: number;
 }>;
 type Account = z.infer<typeof AccountSchema>;
 declare const SessionSchema: z.ZodObject<{
@@ -80,19 +80,19 @@ declare const SessionSchema: z.ZodObject<{
     createdAt: z.ZodDate;
     updatedAt: z.ZodDate;
 }, "strip", z.ZodTypeAny, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    expiresAt: Date;
-    sessionToken: string;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    expiresAt?: Date;
+    sessionToken?: string;
 }, {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    userId: string;
-    expiresAt: Date;
-    sessionToken: string;
+    id?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
+    userId?: string;
+    expiresAt?: Date;
+    sessionToken?: string;
 }>;
 type Session = z.infer<typeof SessionSchema>;
 declare const AuthConfigSchema: z.ZodObject<{
@@ -100,87 +100,87 @@ declare const AuthConfigSchema: z.ZodObject<{
         type: z.ZodLiteral<"postgres">;
         url: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        type: "postgres";
-        url: string;
+        type?: "postgres";
+        url?: string;
     }, {
-        type: "postgres";
-        url: string;
+        type?: "postgres";
+        url?: string;
     }>;
     session: z.ZodObject<{
         strategy: z.ZodDefault<z.ZodEnum<["database", "jwt"]>>;
         maxAge: z.ZodDefault<z.ZodNumber>;
         secret: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        strategy: "database" | "jwt";
-        maxAge: number;
-        secret: string;
+        strategy?: "database" | "jwt";
+        maxAge?: number;
+        secret?: string;
     }, {
-        secret: string;
-        strategy?: "database" | "jwt" | undefined;
-        maxAge?: number | undefined;
+        strategy?: "database" | "jwt";
+        maxAge?: number;
+        secret?: string;
     }>;
     providers: z.ZodObject<{
         emailPassword: z.ZodOptional<z.ZodObject<{
             enabled: z.ZodDefault<z.ZodBoolean>;
         }, "strip", z.ZodTypeAny, {
-            enabled: boolean;
+            enabled?: boolean;
         }, {
-            enabled?: boolean | undefined;
+            enabled?: boolean;
         }>>;
         google: z.ZodOptional<z.ZodObject<{
             clientId: z.ZodString;
             clientSecret: z.ZodString;
             scope: z.ZodDefault<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
         }, {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
         }>>;
         github: z.ZodOptional<z.ZodObject<{
             clientId: z.ZodString;
             clientSecret: z.ZodString;
             scope: z.ZodDefault<z.ZodString>;
         }, "strip", z.ZodTypeAny, {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
         }, {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
         }>>;
     }, "strip", z.ZodTypeAny, {
         emailPassword?: {
-            enabled: boolean;
-        } | undefined;
+            enabled?: boolean;
+        };
         google?: {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
         github?: {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
     }, {
         emailPassword?: {
-            enabled?: boolean | undefined;
-        } | undefined;
+            enabled?: boolean;
+        };
         google?: {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
         github?: {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
     }>;
     callbacks: z.ZodOptional<z.ZodObject<{
         onSignUp: z.ZodOptional<z.ZodFunction<z.ZodTuple<[z.ZodObject<{
@@ -193,41 +193,41 @@ declare const AuthConfigSchema: z.ZodObject<{
                 createdAt: z.ZodDate;
                 updatedAt: z.ZodDate;
             }, "strip", z.ZodTypeAny, {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }, {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }>;
         }, "strip", z.ZodTypeAny, {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
         }, {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
         }>], z.ZodUnknown>, z.ZodVoid>>;
         onSignIn: z.ZodOptional<z.ZodFunction<z.ZodTuple<[z.ZodObject<{
@@ -240,21 +240,21 @@ declare const AuthConfigSchema: z.ZodObject<{
                 createdAt: z.ZodDate;
                 updatedAt: z.ZodDate;
             }, "strip", z.ZodTypeAny, {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }, {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }>;
             account: z.ZodOptional<z.ZodObject<{
                 id: z.ZodString;
@@ -267,68 +267,68 @@ declare const AuthConfigSchema: z.ZodObject<{
                 createdAt: z.ZodDate;
                 updatedAt: z.ZodDate;
             }, "strip", z.ZodTypeAny, {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             }, {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             }>>;
         }, "strip", z.ZodTypeAny, {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
+            };
         }, {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
+            };
         }>], z.ZodUnknown>, z.ZodVoid>>;
         onSignOut: z.ZodOptional<z.ZodFunction<z.ZodTuple<[z.ZodObject<{
             user: z.ZodObject<{
@@ -340,276 +340,276 @@ declare const AuthConfigSchema: z.ZodObject<{
                 createdAt: z.ZodDate;
                 updatedAt: z.ZodDate;
             }, "strip", z.ZodTypeAny, {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }, {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             }>;
         }, "strip", z.ZodTypeAny, {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
         }, {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
         }>], z.ZodUnknown>, z.ZodVoid>>;
     }, "strip", z.ZodTypeAny, {
-        onSignUp?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+        onSignUp?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
-        }, ...args: unknown[]) => void) | undefined;
-        onSignIn?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+        }, ...args: unknown[]) => void;
+        onSignIn?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
-        }, ...args: unknown[]) => void) | undefined;
-        onSignOut?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             };
-        }, ...args: unknown[]) => void) | undefined;
+        }, ...args: unknown[]) => void;
+        onSignOut?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+            };
+        }, ...args: unknown[]) => void;
     }, {
-        onSignUp?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+        onSignUp?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
-        }, ...args: unknown[]) => void) | undefined;
-        onSignIn?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+        }, ...args: unknown[]) => void;
+        onSignIn?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
-        }, ...args: unknown[]) => void) | undefined;
-        onSignOut?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             };
-        }, ...args: unknown[]) => void) | undefined;
+        }, ...args: unknown[]) => void;
+        onSignOut?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+            };
+        }, ...args: unknown[]) => void;
     }>>;
 }, "strip", z.ZodTypeAny, {
-    database: {
-        type: "postgres";
-        url: string;
+    database?: {
+        type?: "postgres";
+        url?: string;
     };
-    session: {
-        strategy: "database" | "jwt";
-        maxAge: number;
-        secret: string;
+    session?: {
+        strategy?: "database" | "jwt";
+        maxAge?: number;
+        secret?: string;
     };
-    providers: {
+    providers?: {
         emailPassword?: {
-            enabled: boolean;
-        } | undefined;
+            enabled?: boolean;
+        };
         google?: {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
         github?: {
-            clientId: string;
-            clientSecret: string;
-            scope: string;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
     };
     callbacks?: {
-        onSignUp?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+        onSignUp?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
-        }, ...args: unknown[]) => void) | undefined;
-        onSignIn?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+        }, ...args: unknown[]) => void;
+        onSignIn?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
-        }, ...args: unknown[]) => void) | undefined;
-        onSignOut?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                emailVerified?: boolean | undefined;
-                image?: string | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             };
-        }, ...args: unknown[]) => void) | undefined;
-    } | undefined;
+        }, ...args: unknown[]) => void;
+        onSignOut?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+            };
+        }, ...args: unknown[]) => void;
+    };
 }, {
-    database: {
-        type: "postgres";
-        url: string;
+    database?: {
+        type?: "postgres";
+        url?: string;
     };
-    session: {
-        secret: string;
-        strategy?: "database" | "jwt" | undefined;
-        maxAge?: number | undefined;
+    session?: {
+        strategy?: "database" | "jwt";
+        maxAge?: number;
+        secret?: string;
     };
-    providers: {
+    providers?: {
         emailPassword?: {
-            enabled?: boolean | undefined;
-        } | undefined;
+            enabled?: boolean;
+        };
         google?: {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
         github?: {
-            clientId: string;
-            clientSecret: string;
-            scope?: string | undefined;
-        } | undefined;
+            clientId?: string;
+            clientSecret?: string;
+            scope?: string;
+        };
     };
     callbacks?: {
-        onSignUp?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+        onSignUp?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
-        }, ...args: unknown[]) => void) | undefined;
-        onSignIn?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+        }, ...args: unknown[]) => void;
+        onSignIn?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
             };
             account?: {
-                id: string;
-                createdAt: Date;
-                updatedAt: Date;
-                userId: string;
-                provider: string;
-                providerAccountId: string;
-                accessToken?: string | undefined;
-                refreshToken?: string | undefined;
-                expiresAt?: number | undefined;
-            } | undefined;
-        }, ...args: unknown[]) => void) | undefined;
-        onSignOut?: ((args_0: {
-            user: {
-                id: string;
-                email: string;
-                emailVerified: boolean;
-                createdAt: Date;
-                updatedAt: Date;
-                name?: string | undefined;
-                image?: string | undefined;
+                id?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+                userId?: string;
+                provider?: string;
+                providerAccountId?: string;
+                accessToken?: string;
+                refreshToken?: string;
+                expiresAt?: number;
             };
-        }, ...args: unknown[]) => void) | undefined;
-    } | undefined;
+        }, ...args: unknown[]) => void;
+        onSignOut?: (args_0: {
+            user?: {
+                id?: string;
+                email?: string;
+                name?: string;
+                emailVerified?: boolean;
+                image?: string;
+                createdAt?: Date;
+                updatedAt?: Date;
+            };
+        }, ...args: unknown[]) => void;
+    };
 }>;
 type AuthConfig = z.infer<typeof AuthConfigSchema>;
 interface SignInResult {
@@ -812,7 +812,7 @@ declare function createAuthHandlers(config: NextAuthConfig): {
     getServerSession: (request: NextRequest) => Promise<{
         user: User;
         session: Session;
-    } | null>;
+    }>;
 };
 
 export { NextAuthAdapter, createAuthHandlers };
