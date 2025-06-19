@@ -1,0 +1,70 @@
+name: Publish to npm
+
+# This workflow ensures all tests, type checks, and linting pass before publishing
+# If any check fails, the publish step will not run
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
+          
+      - name: Install dependencies
+        run: npm ci
+        
+      - name: Run tests
+        run: npm test
+        continue-on-error: false
+        
+      - name: Run type check
+        run: npm run type-check
+        continue-on-error: false
+        
+      - name: Run lint
+        run: npm run lint
+        continue-on-error: false
+        
+      - name: Build package
+        run: npm run build
+        
+      # All quality checks must pass before proceeding to publish
+      - name: Verify all checks passed
+        run: echo "✅ All tests, type checks, and linting passed successfully!"
+        
+      - name: Set version from input (if workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        run: npm version ${{ inputs.version }} --no-git-tag-version
+        
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_SAAS_DEV_KIT }}
+          
+      - name: Create GitHub release (if workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ inputs.version }}
+          release_name: Release v${{ inputs.version }}
+          draft: false
+          prerelease: false
